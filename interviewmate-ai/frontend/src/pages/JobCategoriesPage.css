@@ -1,0 +1,155 @@
+/* ============================================
+   INTERVIEWMATE AI - JOB CATEGORIES PAGE STYLES
+   ============================================ */
+
+.job-categories-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--space-6);
+}
+
+/* Header */
+.categories-header {
+  text-align: center;
+  margin-bottom: var(--space-10);
+}
+
+.categories-header h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.categories-header > p {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-6);
+}
+
+.categories-header .search-box {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Categories Grid */
+.categories-grid.full {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+}
+
+@media (max-width: 1023px) {
+  .categories-grid.full {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 639px) {
+  .categories-grid.full {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-4);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  text-align: center;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-300);
+}
+
+.category-card .category-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-2);
+}
+
+.category-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.category-card p {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.category-action {
+  margin-top: var(--space-2);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--primary-600);
+}
+
+.category-card:hover .category-action {
+  color: var(--primary-700);
+}
+
+/* Empty */
+.empty-categories {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-12);
+  color: var(--text-muted);
+}
+
+.empty-categories span {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+/* Popular Tags */
+.popular-tags {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+}
+
+.popular-tags h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.skill-tag {
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.skill-tag:hover {
+  background: var(--primary-50);
+  border-color: var(--primary-300);
+  color: var(--primary-600);
+}

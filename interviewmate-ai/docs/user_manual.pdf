@@ -1,0 +1,212 @@
+% ============================================
+% INTERVIEWMATE AI - USER MANUAL
+% ============================================
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{fontawesome5}
+
+\geometry{margin=1in}
+\definecolor{primary}{RGB}{37, 99, 235}
+\definecolor{success}{RGB}{16, 185, 129}
+\definecolor{warning}{RGB}{245, 158, 11}
+\definecolor{danger}{RGB}{239, 68, 68}
+
+\tcbset{
+    tipbox/.style={colback=green!5,colframe=success,title={\faLightbulb\ Tip}},
+    warnbox/.style={colback=orange!5,colframe=warning,title={\faExclamationTriangle\ Warning}},
+    infobox/.style={colback=blue!5,colframe=primary,title={\faInfoCircle\ Info}}
+}
+
+\title{\textbf{User Manual}\\[0.3cm]
+\Large InterviewMate AI}
+\author{Support Team}
+\date{Version 1.0 - July 2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Getting Started}
+
+\subsection{System Requirements}
+\begin{itemize}
+    \item \textbf{Browser:} Chrome 90+, Firefox 88+, Edge 90+, Safari 14+
+    \item \textbf{Webcam:} 720p minimum (1080p recommended)
+    \item \textbf{Microphone:} Built-in or external microphone
+    \item \textbf{Internet:} Stable connection, minimum 2 Mbps upload speed
+    \item \textbf{OS:} Windows 10+, macOS 10.15+, Linux (Ubuntu 18.04+)
+\end{itemize}
+
+\subsection{Creating an Account}
+\begin{enumerate}
+    \item Navigate to \url{https://interviewmate-ai.com}
+    \item Click \textbf{``Get Started''} or \textbf{``Sign Up''}
+    \item Fill in your details:
+    \begin{itemize}
+        \item Full Name
+        \item Email Address (valid email required)
+        \item Password (min 8 chars, 1 uppercase, 1 number)
+        \item College/University Name
+        \item Branch/Department
+        \item Academic Year
+    \end{itemize}
+    \item Click \textbf{``Create Account''}
+    \item Verify your email via the confirmation link
+\end{enumerate}
+
+\begin{tcolorbox}[tipbox]
+Use your college email if available for better profile matching with campus placement requirements.
+\end{tcolorbox}
+
+\section{Dashboard Overview}
+
+After logging in, you'll see your \textbf{Personal Dashboard} with:
+
+\begin{itemize}
+    \item \faChartLine\ \textbf{Performance Overview:} Your latest scores and trends
+    \item \faCalendarAlt\ \textbf{Recent Sessions:} History of past mock interviews
+    \item \faTrophy\ \textbf{Achievements:} Milestones and badges earned
+    \item \faBullseye\ \textbf{Quick Start:} Buttons to start a new interview
+\end{itemize}
+
+\section{Starting a Mock Interview}
+
+\subsection{Step 1: Interview Setup}
+\begin{enumerate}
+    \item Click \textbf{``Start New Interview''} from the dashboard
+    \item Select your \textbf{Job Category} (e.g., Software Development, Data Science)
+    \item Select your \textbf{Target Company} (optional - for company-specific questions)
+    \item Upload your \textbf{Resume} (PDF or DOCX, max 5MB)
+    \item Configure settings:
+    \begin{itemize}
+        \item Number of questions (5-20)
+        \item Time per question (1-5 minutes)
+        \item Difficulty level (Easy, Medium, Hard, Mixed)
+    \end{itemize}
+    \item Click \textbf{``Begin Interview''}
+\end{enumerate}
+
+\begin{tcolorbox}[infobox]
+The AI analyzes your resume to generate personalized questions based on your skills and experience.
+\end{tcolorbox}
+
+\subsection{Step 2: Pre-Interview Check}
+Before starting, the system will:
+\begin{itemize}
+    \item Test your webcam and show a preview
+    \item Test your microphone and audio levels
+    \item Check your internet connection speed
+    \item Verify adequate lighting conditions
+\end{itemize}
+
+\begin{tcolorbox}[warnbox]
+Ensure you are in a well-lit, quiet room. Poor lighting affects facial emotion analysis accuracy.
+\end{tcolorbox}
+
+\subsection{Step 3: During the Interview}
+The interview interface shows:
+\begin{itemize}
+    \item \textbf{Top Bar:} Question number, timer, pause button
+    \item \textbf{Center:} Current question text
+    \item \textbf{Left:} Your video feed with real-time emotion indicators
+    \item \textbf{Right:} Live transcript of your speech
+    \item \textbf{Bottom:} Recording controls and real-time tips
+\end{itemize}
+
+\textbf{Real-time Tips:} The AI provides suggestions like:
+\begin{itemize}
+    \item ``Try to maintain more eye contact with the camera''
+    \item ``You seem nervous - take a deep breath''
+    \item ``Speak slower for better clarity''
+    \item ``Good! Your confidence is improving''
+\end{itemize}
+
+\subsection{Step 4: Answering Questions}
+\begin{enumerate}
+    \item Read the question carefully
+    \item Click \textbf{``Start Recording''} when ready
+    \item Answer using the STAR method (Situation, Task, Action, Result)
+    \item Click \textbf{``Submit Answer''} when done
+    \item Review the AI-generated STAR model answer for reference
+    \item Click \textbf{``Next Question''} to continue
+\end{enumerate}
+
+\section{Understanding Your Report}
+
+After completing the interview, you'll receive a \textbf{Comprehensive Confidence Report}:
+
+\subsection{Score Breakdown}
+\begin{itemize}
+    \item \textbf{Facial Emotion Score (0-100):} Measures confidence, engagement, and nervousness from facial expressions
+    \item \textbf{Speech Emotion Score (0-100):} Analyzes tone, stress, and enthusiasm in your voice
+    \item \textbf{Clarity Score (0-100):} Evaluates speech pace, filler words, and pronunciation
+    \item \textbf{Answer Quality Score (0-100):} Assesses relevance, grammar, and STAR compliance
+    \item \textbf{Eye Contact Score (0-100):} Measures how well you maintained eye contact with the camera
+    \item \textbf{Overall Confidence Score (0-100):} Weighted average of all factors
+\end{itemize}
+
+\subsection{Improvement Tips}
+The report includes personalized suggestions:
+\begin{itemize}
+    \item Specific areas to improve (e.g., ``Reduce filler words like `um' and `uh''')
+    \item Practice exercises tailored to your weak areas
+    \item Recommended resources and tutorials
+\end{itemize}
+
+\section{Progress Tracking}
+
+Navigate to \textbf{``My Progress''} to view:
+\begin{itemize}
+    \item \textbf{Score Trends:} Line chart showing scores over time
+    \item \textbf{Skill Radar:} Visual comparison of all skill areas
+    \item \textbf{Session History:} Detailed log of all past interviews
+    \item \textbf{Comparison:} How you rank against average users
+\end{itemize}
+
+\section{Exporting Reports}
+
+To download your report:
+\begin{enumerate}
+    \item Go to \textbf{``My Reports''} from the dashboard
+    \item Select the session you want to export
+    \item Click \textbf{``Export as PDF''}
+    \item The PDF includes all charts, scores, and improvement tips
+\end{enumerate}
+
+\section{Troubleshooting}
+
+\begin{tabular}{@{}p{4cm}p{8cm}@{}}
+\toprule
+\textbf{Issue} & \textbf{Solution} \\
+\midrule
+Webcam not detected & Check browser permissions, ensure no other app is using the camera \\
+Audio not recording & Check microphone permissions, test with another app \\
+Low confidence scores & Practice in better lighting, speak clearly, maintain eye contact \\
+Questions too hard/easy & Adjust difficulty in interview setup \\
+PDF export fails & Check internet connection, try again after a few minutes \\
+\bottomrule
+\end{tabular}
+
+\section{Privacy \& Data Security}
+\begin{itemize}
+    \item Video recordings are processed in real-time and not permanently stored
+    \item Audio is transcribed and then deleted from servers
+    \item All data is encrypted in transit (TLS 1.3) and at rest (AES-256)
+    \item You can request data deletion from Profile Settings
+\end{itemize}
+
+\section{Contact Support}
+\begin{itemize}
+    \item \faEnvelope\ Email: support@interviewmate-ai.com
+    \item \faComments\ Live Chat: Available 9 AM - 6 PM IST
+    \item \faBook\ FAQ: \url{https://interviewmate-ai.com/faq}
+\end{itemize}
+
+\end{document}

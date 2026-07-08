@@ -1,0 +1,290 @@
+/* ============================================
+   INTERVIEWMATE AI - COMPANY DETAIL STYLES
+   ============================================ */
+
+.company-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Header */
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.detail-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border-color);
+}
+
+.detail-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--space-2);
+}
+
+.logo-fallback-lg {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-600);
+}
+
+.header-info h1 {
+  margin: 0 0 var(--space-2);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.header-meta {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.type-badge,
+.count-badge {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.type-badge {
+  background: var(--primary-50);
+  color: var(--primary-700);
+}
+
+.count-badge {
+  background: var(--success-50);
+  color: var(--success-700);
+}
+
+.start-interview-btn {
+  padding: var(--space-3) var(--space-6);
+  font-size: 0.9375rem;
+}
+
+/* Focus Section */
+.focus-section {
+  padding: var(--space-6);
+  background: linear-gradient(135deg, var(--primary-50), var(--primary-100));
+  border: 1px solid var(--primary-200);
+  border-radius: var(--radius-xl);
+}
+
+.focus-section h3 {
+  margin: 0 0 var(--space-2);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-800);
+}
+
+.focus-section p {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--primary-700);
+  line-height: 1.6;
+}
+
+/* Filters */
+.filters-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+}
+
+.search-icon {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+}
+
+.search-box input::placeholder {
+  color: var(--text-muted);
+}
+
+.difficulty-filters {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+  background: var(--bg-tertiary);
+}
+
+.filter-btn.active {
+  background: var(--primary-600);
+  color: white;
+  border-color: var(--primary-600);
+}
+
+.filter-count {
+  padding: 2px 6px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  font-size: 0.6875rem;
+}
+
+.filter-btn.active .filter-count {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Questions List */
+.questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.question-item {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
+}
+
+.question-item:hover {
+  border-color: var(--primary-300);
+  box-shadow: var(--shadow-md);
+}
+
+.question-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary-50);
+  color: var(--primary-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.question-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.question-text {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.question-tags {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.diff-tag,
+.type-tag {
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.diff-tag.easy {
+  background: var(--success-50);
+  color: var(--success-700);
+}
+
+.diff-tag.medium {
+  background: var(--warning-50);
+  color: var(--warning-700);
+}
+
+.diff-tag.hard {
+  background: var(--danger-50);
+  color: var(--danger-700);
+}
+
+.type-tag {
+  background: var(--primary-50);
+  color: var(--primary-700);
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: var(--space-12);
+  color: var(--text-muted);
+}
+
+.empty-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.empty-state p {
+  font-size: 0.9375rem;
+}

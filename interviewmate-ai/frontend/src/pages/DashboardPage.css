@@ -1,0 +1,346 @@
+/* ============================================
+   INTERVIEWMATE AI - DASHBOARD PAGE STYLES
+   ============================================ */
+
+.dashboard-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--space-6);
+}
+
+.dashboard-loading {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.dashboard-header h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.dashboard-header p {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+@media (max-width: 1023px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 639px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-card.dashboard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+}
+
+.stat-icon-bg {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background: var(--primary-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-info .stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stat-info .stat-label {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-6);
+}
+
+@media (max-width: 1023px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+}
+
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.card-header-row h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.view-link {
+  font-size: 0.875rem;
+  color: var(--primary-600);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.view-link:hover {
+  text-decoration: underline;
+}
+
+/* Sessions List */
+.sessions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.session-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
+}
+
+.session-item:hover {
+  background: var(--bg-tertiary);
+}
+
+.session-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.session-category {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+}
+
+.session-company {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.session-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.session-score {
+  flex-shrink: 0;
+}
+
+.session-link {
+  padding: var(--space-1) var(--space-3);
+  background: var(--primary-50);
+  color: var(--primary-600);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.session-link:hover {
+  background: var(--primary-100);
+}
+
+/* Empty Sessions */
+.empty-sessions {
+  text-align: center;
+  padding: var(--space-8);
+  color: var(--text-muted);
+}
+
+.empty-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.empty-sessions p {
+  margin-bottom: var(--space-4);
+}
+
+/* Actions Card */
+.actions-card {
+  grid-row: span 2;
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-3);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.action-item:hover {
+  background: var(--primary-50);
+  transform: translateY(-2px);
+}
+
+.action-icon {
+  font-size: 2rem;
+}
+
+.action-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Chart Card */
+.chart-card {
+  grid-column: span 2;
+}
+
+@media (max-width: 1023px) {
+  .chart-card {
+    grid-column: span 1;
+  }
+}
+
+.trend-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-3);
+  height: 200px;
+  padding: var(--space-4);
+}
+
+.trend-bar-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.trend-bar {
+  width: 100%;
+  background: linear-gradient(to top, var(--primary-500), var(--primary-300));
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+   min-height: 20px;
+  transition: height 0.5s ease;
+}
+
+.trend-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.empty-chart {
+  text-align: center;
+  padding: var(--space-12);
+  color: var(--text-muted);
+}
+
+.empty-chart span {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+/* Tips Card */
+.tips-card {
+  grid-column: span 2;
+}
+
+@media (max-width: 1023px) {
+  .tips-card {
+    grid-column: span 1;
+  }
+}
+
+.tip-content {
+  padding: var(--space-4);
+  background: linear-gradient(135deg, var(--primary-50), var(--success-50));
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--primary-200);
+}
+
+.tip-text {
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  line-height: 1.7;
+  margin: 0 0 var(--space-4);
+  font-style: italic;
+}
+
+.tip-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary-600);
+  text-decoration: none;
+}
+
+.tip-link:hover {
+  text-decoration: underline;
+}

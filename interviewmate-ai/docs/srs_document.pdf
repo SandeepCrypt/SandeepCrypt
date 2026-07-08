@@ -1,0 +1,162 @@
+% ============================================
+% INTERVIEWMATE AI - SOFTWARE REQUIREMENTS SPECIFICATION
+% ============================================
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{booktabs}
+
+\geometry{margin=1in}
+\definecolor{primary}{RGB}{37, 99, 235}
+
+\title{\textbf{Software Requirements Specification}\\[0.3cm]
+\Large InterviewMate AI\\Mock Interview Platform with AI Analytics}
+\author{Version 1.0}
+\date{July 2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introduction}
+\subsection{Purpose}
+This SRS document defines the complete functional and non-functional requirements for InterviewMate AI, an intelligent mock interview platform.
+
+\subsection{Intended Audience}
+Development team, project supervisors, QA engineers, and stakeholders.
+
+\subsection{Project Scope}
+InterviewMate AI is a web-based platform that simulates job interviews using AI. It analyzes candidate performance through facial emotion detection, speech analysis, NLP evaluation, and generates comprehensive confidence reports.
+
+\section{Overall Description}
+\subsection{Product Perspective}
+A standalone web application with optional integration with LinkedIn for resume import.
+
+\subsection{User Classes}
+\begin{itemize}
+    \item \textbf{Job Seekers:} Primary users who take mock interviews
+    \item \textbf{Career Counselors:} Review progress reports of their students
+    \item \textbf{System Administrators:} Manage question banks and user accounts
+\end{itemize}
+
+\subsection{Operating Environment}
+\begin{itemize}
+    \item Frontend: Modern browsers (Chrome 90+, Firefox 88+, Edge 90+)
+    \item Backend: Python 3.9+, Flask 2.0+
+    \item Database: MySQL 8.0+ or MongoDB 5.0+
+    \item AI Models: TensorFlow 2.x, PyTorch, OpenCV 4.x
+\end{itemize}
+
+\section{Functional Requirements}
+
+\subsection{User Authentication (FR-001 to FR-005)}
+\begin{longtable}{@{}p{2cm}p{10cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Requirement} \\
+\midrule
+FR-001 & System shall allow user registration with email, password, name, college, branch, and year \\
+FR-002 & System shall validate email format and enforce password complexity (min 8 chars, 1 uppercase, 1 number) \\
+FR-003 & System shall support JWT-based authentication with access and refresh tokens \\
+FR-004 & System shall allow password reset via email OTP \\
+FR-005 & System shall implement role-based access control (User, Counselor, Admin) \\
+\bottomrule
+\end{longtable}
+
+\subsection{Interview Session (FR-006 to FR-015)}
+\begin{longtable}{@{}p{2cm}p{10cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Requirement} \\
+\midrule
+FR-006 & System shall allow selection of job category from 15+ predefined domains \\
+FR-007 & System shall allow selection of target company for company-specific questions \\
+FR-008 & System shall parse uploaded resumes (PDF/DOCX) to extract skills and experience \\
+FR-009 & System shall generate unique AI questions based on resume, category, and company \\
+FR-010 & System shall display one question at a time with configurable time limits \\
+FR-011 & System shall capture video feed via WebRTC for facial emotion analysis \\
+FR-012 & System shall capture audio stream for speech emotion and transcript analysis \\
+FR-013 & System shall provide real-time feedback tips during the interview \\
+FR-014 & System shall allow pause, resume, and terminate interview controls \\
+FR-015 & System shall generate STAR model answer after each user response \\
+\bottomrule
+\end{longtable}
+
+\subsection{Analysis \& Reporting (FR-016 to FR-025)}
+\begin{longtable}{@{}p{2cm}p{10cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Requirement} \\
+\midrule
+FR-016 & System shall analyze facial emotions every 500ms during the interview \\
+FR-017 & System shall analyze speech emotions from audio chunks every 2 seconds \\
+FR-018 & System shall transcribe speech to text with timestamp alignment \\
+FR-019 & System shall evaluate answer relevance using NLP semantic similarity \\
+FR-020 & System shall check STAR model compliance (Situation, Task, Action, Result) \\
+FR-021 & System shall calculate eye contact percentage using gaze tracking \\
+FR-022 & System shall compute weighted confidence score from all factors \\
+FR-023 & System shall generate detailed post-session report with charts \\
+FR-024 & System shall export reports as PDF with professional formatting \\
+FR-025 & System shall track progress across sessions with trend visualization \\
+\bottomrule
+\end{longtable}
+
+\section{Non-Functional Requirements}
+
+\subsection{Performance (NFR-001 to NFR-003)}
+\begin{itemize}
+    \item[NFR-001] Page load time shall not exceed 3 seconds
+    \item[NFR-002] AI emotion analysis latency shall be under 500ms per frame
+    \item[NFR-003] System shall support 100 concurrent users
+\end{itemize}
+
+\subsection{Security (NFR-004 to NFR-006)}
+\begin{itemize}
+    \item[NFR-004] All passwords shall be hashed using bcrypt with salt rounds $\geq$ 12
+    \item[NFR-005] Video/audio streams shall be encrypted end-to-end
+    \item[NFR-006] API endpoints shall implement rate limiting (100 req/min per user)
+\end{itemize}
+
+\subsection{Reliability (NFR-007 to NFR-009)}
+\begin{itemize}
+    \item[NFR-007] System uptime shall be $\geq$ 99.5\%
+    \item[NFR-008] Data backup shall occur daily with 7-day retention
+    \item[NFR-009] Graceful degradation: if AI modules fail, basic interview continues
+\end{itemize}
+
+\section{External Interface Requirements}
+
+\subsection{User Interfaces}
+\begin{itemize}
+    \item Responsive design (mobile, tablet, desktop)
+    \item Dark/Light theme support
+    \item Accessibility compliance (WCAG 2.1 Level AA)
+\end{itemize}
+
+\subsection{Hardware Interfaces}
+\begin{itemize}
+    \item Webcam (minimum 720p recommended)
+    \item Microphone (built-in or external)
+    \item Internet connection (minimum 2 Mbps upload)
+\end{itemize}
+
+\subsection{Software Interfaces}
+\begin{itemize}
+    \item OpenAI API / HuggingFace for LLM question generation
+    \item Google Speech-to-Text or Whisper API
+    \item Email service (SendGrid/AWS SES) for notifications
+\end{itemize}
+
+\section{Appendix}
+\subsection{Glossary}
+\begin{itemize}
+    \item \textbf{STAR:} Situation, Task, Action, Result - structured response framework
+    \item \textbf{FER:} Facial Expression Recognition
+    \item \textbf{WebRTC:} Web Real-Time Communication
+    \item \textbf{JWT:} JSON Web Token
+\end{itemize}
+
+\end{document}

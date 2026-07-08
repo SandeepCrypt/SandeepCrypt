@@ -1,0 +1,141 @@
+% ============================================
+% INTERVIEWMATE AI - TEST CASES DOCUMENT
+% ============================================
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+
+\geometry{margin=1in}
+\definecolor{pass}{RGB}{16, 185, 129}
+\definecolor{fail}{RGB}{239, 68, 68}
+
+\title{\textbf{Test Cases Document}\\[0.3cm]
+\Large InterviewMate AI}
+\author{QA Team}
+\date{July 2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Test Strategy}
+Testing covers Unit Tests, Integration Tests, System Tests, and User Acceptance Tests (UAT).
+
+\section{Authentication Module Tests}
+
+\begin{longtable}{@{}p{1cm}p{3cm}p{4cm}p{2.5cm}p{2cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Test Case} & \textbf{Steps} & \textbf{Expected Result} & \textbf{Status} \\
+\midrule
+TC-AUTH-01 & Valid Registration & Enter valid name, email, password, college details & Account created, verification email sent & \textcolor{pass}{Pass} \\
+TC-AUTH-02 & Duplicate Email & Register with existing email & Error: Email already exists & \textcolor{pass}{Pass} \\
+TC-AUTH-03 & Weak Password & Enter password ``123'' & Error: Min 8 chars, 1 uppercase, 1 number & \textcolor{pass}{Pass} \\
+TC-AUTH-04 & Invalid Email & Enter ``test@invalid'' & Error: Invalid email format & \textcolor{pass}{Pass} \\
+TC-AUTH-05 & Valid Login & Enter correct credentials & JWT tokens returned, dashboard loaded & \textcolor{pass}{Pass} \\
+TC-AUTH-06 & Invalid Password & Enter wrong password & Error: Invalid credentials & \textcolor{pass}{Pass} \\
+TC-AUTH-07 & Token Refresh & Use expired access token with valid refresh token & New access token issued & \textcolor{pass}{Pass} \\
+TC-AUTH-08 & Password Reset & Request reset, enter OTP, set new password & Password updated successfully & \textcolor{pass}{Pass} \\
+\bottomrule
+\end{longtable}
+
+\section{Interview Module Tests}
+
+\begin{longtable}{@{}p{1cm}p{3cm}p{4cm}p{2.5cm}p{2cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Test Case} & \textbf{Steps} & \textbf{Expected Result} & \textbf{Status} \\
+\midrule
+TC-INT-01 & Start Interview & Select category, company, upload resume & Session created, first question loaded & \textcolor{pass}{Pass} \\
+TC-INT-02 & Webcam Access & Grant camera permission & Video feed displayed with emotion overlay & \textcolor{pass}{Pass} \\
+TC-INT-03 & Deny Webcam & Reject camera permission & Graceful fallback, text-only interview mode & \textcolor{pass}{Pass} \\
+TC-INT-04 & Record Answer & Click record, speak answer, submit & Audio saved, transcript generated & \textcolor{pass}{Pass} \\
+TC-INT-05 & Timer Expiry & Wait for timer to reach zero & Auto-submit current response & \textcolor{pass}{Pass} \\
+TC-INT-06 & Pause Interview & Click pause button & Timer paused, recording stopped & \textcolor{pass}{Pass} \\
+TC-INT-07 & Resume Interview & Click resume after pause & Timer resumes, recording continues & \textcolor{pass}{Pass} \\
+TC-INT-08 & End Interview Early & Click end interview & Confirmation dialog, partial report generated & \textcolor{pass}{Pass} \\
+TC-INT-09 & Question Generation & Upload resume with Python skills & Questions include Python-related topics & \textcolor{pass}{Pass} \\
+TC-INT-10 & Company Filter & Select TCS as target company & TCS-specific questions included & \textcolor{pass}{Pass} \\
+\bottomrule
+\end{longtable}
+
+\section{AI Module Tests}
+
+\begin{longtable}{@{}p{1cm}p{3cm}p{4cm}p{2.5cm}p{2cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Test Case} & \textbf{Steps} & \textbf{Expected Result} & \textbf{Status} \\
+\midrule
+TC-AI-01 & Face Emotion - Happy & Smile at camera & Detected: Happy/Confident & \textcolor{pass}{Pass} \\
+TC-AI-02 & Face Emotion - Nervous & Show nervous expression & Detected: Nervous/Anxious & \textcolor{pass}{Pass} \\
+TC-AI-03 & Face Emotion - Neutral & Maintain neutral face & Detected: Neutral & \textcolor{pass}{Pass} \\
+TC-AI-04 & Speech Emotion - Confident & Speak confidently & High confidence score & \textcolor{pass}{Pass} \\
+TC-AI-05 & Speech Emotion - Stressed & Speak with stress/tension & Low speech emotion score & \textcolor{pass}{Pass} \\
+TC-AI-06 & Speech-to-Text & Speak ``Hello, my name is John'' & Transcript matches input & \textcolor{pass}{Pass} \\
+TC-AI-07 & Filler Word Detection & Say ``Um, I think, uh, maybe'' & Filler words counted and flagged & \textcolor{pass}{Pass} \\
+TC-AI-08 & STAR Compliance - Good & Answer with clear S-T-A-R structure & High compliance score ($>$80) & \textcolor{pass}{Pass} \\
+TC-AI-09 & STAR Compliance - Poor & Answer without structure & Low compliance score ($<$40) & \textcolor{pass}{Pass} \\
+TC-AI-10 & Eye Contact - Good & Look at camera continuously & Score $>$ 80\% & \textcolor{pass}{Pass} \\
+TC-AI-11 & Eye Contact - Poor & Look away frequently & Score $<$ 40\% & \textcolor{pass}{Pass} \\
+TC-AI-12 & Keyword Matching & Answer with expected keywords & High relevance score & \textcolor{pass}{Pass} \\
+\bottomrule
+\end{longtable}
+
+\section{Report Module Tests}
+
+\begin{longtable}{@{}p{1cm}p{3cm}p{4cm}p{2.5cm}p{2cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Test Case} & \textbf{Steps} & \textbf{Expected Result} & \textbf{Status} \\
+\midrule
+TC-RPT-01 & Report Generation & Complete 5-question interview & Report with all scores generated & \textcolor{pass}{Pass} \\
+TC-RPT-02 & Score Calculation & Verify weighted average math & Overall score = weighted sum & \textcolor{pass}{Pass} \\
+TC-RPT-03 & PDF Export & Click export PDF & PDF downloaded with charts & \textcolor{pass}{Pass} \\
+TC-RPT-04 & Progress Update & Complete 3 sessions & Progress tracking updated correctly & \textcolor{pass}{Pass} \\
+TC-RPT-05 & Trend Chart & View progress over 5 sessions & Line chart shows correct trend & \textcolor{pass}{Pass} \\
+\bottomrule
+\end{longtable}
+
+\section{Performance Tests}
+
+\begin{longtable}{@{}p{1cm}p{3cm}p{4cm}p{2.5cm}p{2cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Test Case} & \textbf{Steps} & \textbf{Expected Result} & \textbf{Status} \\
+\midrule
+TC-PERF-01 & Page Load Time & Measure dashboard load time & $<$ 3 seconds & \textcolor{pass}{Pass} \\
+TC-PERF-02 & Emotion Analysis Latency & Measure frame processing time & $<$ 500ms per frame & \textcolor{pass}{Pass} \\
+TC-PERF-03 & Concurrent Users & Simulate 100 concurrent interviews & All sessions stable & \textcolor{pass}{Pass} \\
+TC-PERF-04 & Database Query & Fetch 1000 questions & $<$ 100ms response time & \textcolor{pass}{Pass} \\
+\bottomrule
+\end{longtable}
+
+\section{Security Tests}
+
+\begin{longtable}{@{}p{1cm}p{3cm}p{4cm}p{2.5cm}p{2cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Test Case} & \textbf{Steps} & \textbf{Expected Result} & \textbf{Status} \\
+\midrule
+TC-SEC-01 & SQL Injection & Enter ``' OR 1=1 --'' in login & Input sanitized, no unauthorized access & \textcolor{pass}{Pass} \\
+TC-SEC-02 & XSS Attack & Enter ``<script>alert('xss')</script>'' in profile & Input sanitized, script not executed & \textcolor{pass}{Pass} \\
+TC-SEC-03 & Unauthorized Access & Access admin endpoint as regular user & 403 Forbidden response & \textcolor{pass}{Pass} \\
+TC-SEC-04 & Rate Limiting & Send 150 requests/min from one IP & 429 Too Many Requests after 100 & \textcolor{pass}{Pass} \\
+\bottomrule
+\end{longtable}
+
+\section{Compatibility Tests}
+
+\begin{longtable}{@{}p{1cm}p{3cm}p{4cm}p{2.5cm}p{2cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Test Case} & \textbf{Steps} & \textbf{Expected Result} & \textbf{Status} \\
+\midrule
+TC-COMP-01 & Chrome Browser & Test on Chrome 115 & All features functional & \textcolor{pass}{Pass} \\
+TC-COMP-02 & Firefox Browser & Test on Firefox 116 & All features functional & \textcolor{pass}{Pass} \\
+TC-COMP-03 & Mobile Responsive & Test on iPhone 14 Pro & Layout adapts, features accessible & \textcolor{pass}{Pass} \\
+TC-COMP-04 & Tablet & Test on iPad Air & Layout adapts, features accessible & \textcolor{pass}{Pass} \\
+\bottomrule
+\end{longtable}
+
+\end{document}

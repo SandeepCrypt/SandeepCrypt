@@ -1,0 +1,104 @@
+/* ============================================
+   INTERVIEWMATE AI - REGISTER PAGE STYLES
+   ============================================ */
+
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+}
+
+/* Reuse auth-container, auth-card, auth-header, auth-form from LoginPage.css */
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.form-row.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+@media (max-width: 639px) {
+  .form-row.two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+select {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  font-size: 0.9375rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px var(--primary-100);
+}
+
+select.error {
+  border-color: var(--danger-500);
+}
+
+/* Password Strength */
+.password-strength {
+  margin-top: var(--space-2);
+}
+
+.strength-bar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: var(--space-1);
+}
+
+.strength-segment {
+  flex: 1;
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-fast);
+}
+
+.strength-segment.active:nth-child(1) { background: #ef4444; }
+.strength-segment.active:nth-child(2) { background: #f97316; }
+.strength-segment.active:nth-child(3) { background: #eab308; }
+.strength-segment.active:nth-child(4) { background: #84cc16; }
+.strength-segment.active:nth-child(5) { background: #22c55e; }
+
+.strength-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Feature List */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 0.9375rem;
+  opacity: 0.9;
+}

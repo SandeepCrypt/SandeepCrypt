@@ -1,0 +1,80 @@
+% ============================================
+% INTERVIEWMATE AI - PROJECT SYNOPSIS
+% ============================================
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+\geometry{margin=1in}
+\definecolor{primary}{RGB}{37, 99, 235}
+\definecolor{secondary}{RGB}{16, 185, 129}
+
+\title{\textbf{\textcolor{primary}{InterviewMate AI}}\\[0.2cm]
+\Large Project Synopsis}
+\author{Development Team}
+\date{2025-2026}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+Job interviews remain one of the most stressful experiences for candidates, with studies showing that 92\% of job seekers experience anxiety before interviews. Traditional mock interview methods lack objective feedback, personalization, and scalability. \textbf{InterviewMate AI} bridges this gap by providing an intelligent, AI-driven platform that simulates real interview scenarios with comprehensive analytics.
+
+\section{Problem Statement}
+\begin{enumerate}[leftmargin=*]
+    \item Lack of personalized interview preparation tools
+    \item No objective measurement of non-verbal communication (facial expressions, tone)
+    \item Inability to track progress over time with quantifiable metrics
+    \item Limited access to company-specific and role-specific questions
+    \item Absence of real-time feedback during practice sessions
+\end{enumerate}
+
+\section{Proposed Solution}
+InterviewMate AI provides:
+\begin{itemize}
+    \item \textbf{Smart Question Generation} based on resume parsing and job profiles
+    \item \textbf{Multi-modal Emotion Analysis} (face + voice + text)
+    \item \textbf{Real-time Confidence Scoring} with weighted factors
+    \item \textbf{STAR Model Evaluation} for structured answers
+    \item \textbf{Progress Dashboard} with trend analysis and improvement recommendations
+\end{itemize}
+
+\section{System Architecture}
+The platform follows a 3-tier architecture:
+\begin{enumerate}
+    \item \textbf{Presentation Layer:} React.js SPA with WebRTC for video/audio
+    \item \textbf{Application Layer:} Python Flask REST API with AI microservices
+    \item \textbf{Data Layer:} MySQL (relational data) + MongoDB (unstructured data)
+\end{enumerate}
+
+\section{Key Features}
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Feature} & \textbf{Technology} & \textbf{Output} \\
+\midrule
+Face Emotion Detection & OpenCV + CNN (FER2013) & Confidence/Nervousness Score \\
+Speech Emotion Recognition & Librosa + SVM/RF & Vocal Stress/Enthusiasm Score \\
+Speech-to-Text & Whisper API / Vosk & Transcript + Filler Word Count \\
+NLP Analysis & spaCy + NLTK + Transformers & Grammar, Relevance, STAR Score \\
+Eye Contact Tracking & MediaPipe Face Mesh & Eye Contact Percentage \\
+Confidence Scoring & Weighted Aggregation & Overall 0-100 Score \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Expected Outcomes}
+\begin{itemize}
+    \item 40-60\% improvement in candidate confidence scores after 5 sessions
+    \item Objective identification of weakest areas (communication, technical knowledge, body language)
+    \item Company-specific preparation with 500+ curated questions
+    \item Exportable PDF reports for sharing with mentors/career counselors
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,140 @@
+/* ============================================
+   INTERVIEWMATE AI - INTERVIEW CONTROLS STYLES
+   ============================================ */
+
+.interview-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+}
+
+/* Progress */
+.controls-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.progress-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.progress-dots {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.progress-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.progress-dot.completed {
+  background: var(--success-500);
+  border-color: var(--success-500);
+}
+
+.progress-dot.current {
+  background: var(--primary-500);
+  border-color: var(--primary-500);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Buttons */
+.controls-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.control-btn.primary {
+  background: var(--primary-600);
+  color: white;
+}
+
+.control-btn.primary:hover {
+  background: var(--primary-700);
+  transform: translateY(-2px);
+}
+
+.control-btn.record {
+  background: var(--danger-500);
+  color: white;
+  animation: recordingPulse 2s ease infinite;
+}
+
+.control-btn.record:hover {
+  background: var(--danger-600);
+}
+
+.control-btn.pause {
+  background: var(--warning-500);
+  color: white;
+}
+
+.control-btn.pause:hover {
+  background: var(--warning-600);
+}
+
+.control-btn.resume {
+  background: var(--success-500);
+  color: white;
+}
+
+.control-btn.resume:hover {
+  background: var(--success-600);
+}
+
+.control-btn.stop {
+  background: var(--gray-700);
+  color: white;
+}
+
+.control-btn.stop:hover {
+  background: var(--gray-800);
+}
+
+.control-btn.end {
+  background: var(--primary-100);
+  color: var(--primary-700);
+  border: 1px solid var(--primary-300);
+}
+
+.control-btn.end:hover {
+  background: var(--primary-200);
+}
+
+.control-btn.abort {
+  background: var(--danger-50);
+  color: var(--danger-600);
+  border: 1px solid var(--danger-200);
+}
+
+.control-btn.abort:hover {
+  background: var(--danger-100);
+}

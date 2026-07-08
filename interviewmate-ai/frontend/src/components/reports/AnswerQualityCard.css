@@ -1,0 +1,146 @@
+/* ============================================
+   INTERVIEWMATE AI - ANSWER QUALITY CARD STYLES
+   ============================================ */
+
+.answer-quality-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+}
+
+.answer-quality-card .card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.answer-quality-card .card-header h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.header-icon {
+  font-size: 1.5rem;
+}
+
+/* Quality Items */
+.quality-aspects {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.quality-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.quality-main {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.quality-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.quality-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.quality-label {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+}
+
+.quality-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.quality-score {
+  flex-shrink: 0;
+}
+
+.score-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.score-circle::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  background: var(--bg-primary);
+  border-radius: 50%;
+}
+
+.score-circle span {
+  position: relative;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Details */
+.quality-detail {
+  padding-left: calc(1.25rem + var(--space-3));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.detail-text {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.keyword-bars {
+  display: flex;
+  gap: 4px;
+}
+
+.keyword-bar {
+  width: 24px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--bg-tertiary);
+  transition: background var(--transition-fast);
+}
+
+.keyword-bar.matched {
+  background: var(--success-500);
+}
+
+.length-bar {
+  height: 8px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  position: relative;
+}
+
+.length-indicator {
+  position: absolute;
+  top: -2px;
+  width: 4px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  transform: translateX(-50%);
+  transition: left 0.5s ease;
+}

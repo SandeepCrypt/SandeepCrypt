@@ -1,0 +1,139 @@
+/* ============================================
+   INTERVIEWMATE AI - EMOTION VISUALIZER STYLES
+   ============================================ */
+
+.emotion-visualizer {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+}
+
+/* Current Mode */
+.emotion-gauge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  border-radius: var(--radius-xl);
+  gap: var(--space-3);
+  animation: emotionGlow 2s ease-in-out infinite;
+}
+
+.emotion-emoji {
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.emotion-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Timeline Mode */
+.timeline-title,
+.distribution-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.timeline-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 120px;
+  padding: var(--space-2);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+}
+
+.timeline-bar {
+  min-width: 8px;
+  border-radius: 2px 2px 0 0;
+  transition: all 0.2s ease;
+}
+
+.timeline-bar:hover {
+  opacity: 0.8;
+  transform: scaleX(1.5);
+}
+
+.timeline-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* Distribution Mode */
+.distribution-chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.distribution-bar-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.distribution-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-width: 100px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.distribution-bar-bg {
+  flex: 1;
+  height: 24px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.distribution-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.5s ease;
+}
+
+.distribution-percentage {
+  min-width: 40px;
+  text-align: right;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+@keyframes emotionGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  }
+}

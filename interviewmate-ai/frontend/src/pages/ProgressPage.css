@@ -1,0 +1,269 @@
+/* ============================================
+   INTERVIEWMATE AI - PROGRESS PAGE STYLES
+   ============================================ */
+
+.progress-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.progress-loading {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header */
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.progress-header h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.progress-header p {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+.trend-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+/* Overview */
+.progress-overview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 1023px) {
+  .progress-overview {
+    grid-template-columns: 1fr;
+  }
+}
+
+.overview-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.overview-card.stats {
+  gap: var(--space-4);
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.stat-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stat-value.highlight {
+  color: var(--success-600);
+}
+
+.stat-value.warning {
+  color: var(--danger-600);
+}
+
+/* Chart Section */
+.progress-chart-section {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+}
+
+.progress-chart-section h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.trend-chart-container {
+  height: 250px;
+  position: relative;
+}
+
+.trend-chart {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.trend-chart svg {
+  flex: 1;
+  width: 100%;
+}
+
+.trend-labels {
+  display: flex;
+  justify-content: space-around;
+  padding-top: var(--space-2);
+}
+
+.trend-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.empty-chart {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+.empty-chart span {
+  font-size: 3rem;
+  margin-bottom: var(--space-3);
+}
+
+/* History Section */
+.history-section h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-fast);
+}
+
+.history-item:hover {
+  border-color: var(--primary-300);
+  box-shadow: var(--shadow-md);
+}
+
+.history-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary-50);
+  color: var(--primary-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.history-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.history-category {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+}
+
+.history-company {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.history-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.history-score {
+  flex-shrink: 0;
+}
+
+.history-link {
+  padding: var(--space-1) (var-space-3);
+  background: var(--primary-50);
+  color: var(--primary-600);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.history-link:hover {
+  background: var(--primary-100);
+}
+
+/* Empty History */
+.empty-history {
+  text-align: center;
+  padding: var(--space-12);
+  color: var(--text-muted);
+}
+
+.empty-history span {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.empty-history p {
+  margin-bottom: var(--space-4);
+}

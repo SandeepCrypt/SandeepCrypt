@@ -1,0 +1,243 @@
+/* ============================================
+   INTERVIEWMATE AI - RESPONSIVE STYLES
+   ============================================ */
+
+/* Breakpoints */
+/* Mobile: < 640px */
+/* Tablet: 640px - 1024px */
+/* Desktop: > 1024px */
+/* Large: > 1280px */
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* Mobile First Base Styles */
+@media (max-width: 639px) {
+  .container {
+    padding: 0 var(--space-3);
+  }
+
+  /* Hide on mobile */
+  .hide-mobile {
+    display: none !important;
+  }
+
+  /* Stack grid columns */
+  .grid-responsive {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Full width buttons */
+  .btn-full-mobile {
+    width: 100%;
+  }
+
+  /* Adjust interview layout */
+  .interview-layout {
+    flex-direction: column;
+  }
+
+  .interview-sidebar {
+    width: 100%;
+    order: 2;
+  }
+
+  .interview-main {
+    width: 100%;
+    order: 1;
+  }
+
+  /* Smaller video feed */
+  .video-feed {
+    height: 200px;
+  }
+
+  /* Compact navbar */
+  .navbar {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .navbar-brand {
+    font-size: 1.125rem;
+  }
+
+  /* Stack footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--space-6);
+  }
+
+  /* Adjust cards */
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Smaller headings */
+  h1 { font-size: 1.875rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+
+  /* Report charts stack */
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Progress page */
+  .progress-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hide-tablet {
+    display: none !important;
+  }
+
+  .grid-responsive {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .interview-layout {
+    flex-direction: column;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .report-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .progress-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  .hide-desktop {
+    display: none !important;
+  }
+
+  .grid-responsive {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .interview-layout {
+    flex-direction: row;
+    gap: var(--space-6);
+  }
+
+  .interview-sidebar {
+    width: 320px;
+    flex-shrink: 0;
+  }
+
+  .interview-main {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .report-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .progress-stats {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  /* Larger video */
+  .video-feed {
+    height: 400px;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1280px) {
+  .container {
+    padding: 0 var(--space-8);
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .report-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Landscape Mobile */
+@media (max-width: 639px) and (orientation: landscape) {
+  .video-feed {
+    height: 150px;
+  }
+
+  .interview-controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .report-container {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-600: #0000ff;
+    --success-600: #008000;
+    --danger-600: #ff0000;
+  }
+}
+
+/* Dark Mode Specific Adjustments */
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-primary: #f8fafc;
+    --border-color: #334155;
+  }
+}

@@ -1,0 +1,82 @@
+/* ============================================
+   INTERVIEWMATE AI - CONFIDENCE SCORE CARD STYLES
+   ============================================ */
+
+.confidence-score-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+}
+
+.score-ring-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-ring-bg {
+  fill: none;
+  stroke: var(--bg-tertiary);
+  stroke-width: 8;
+}
+
+.score-ring-progress {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.score-content {
+  position: absolute;
+  display: flex;
+  align-items: baseline;
+  font-weight: 800;
+}
+
+.score-percent {
+  font-size: 0.5em;
+  font-weight: 600;
+  margin-left: 2px;
+}
+
+.score-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.score-title {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.score-badge {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid;
+}
+
+/* Animation */
+.confidence-score-card.animate .score-ring-progress {
+  stroke-dashoffset: var(--circumference);
+}
+
+@keyframes scoreFill {
+  to {
+    stroke-dashoffset: var(--target-offset);
+  }
+}

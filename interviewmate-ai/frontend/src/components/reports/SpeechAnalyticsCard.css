@@ -1,0 +1,104 @@
+/* ============================================
+   INTERVIEWMATE AI - SPEECH ANALYTICS CARD STYLES
+   ============================================ */
+
+.speech-analytics-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.header-icon {
+  font-size: 1.5rem;
+}
+
+/* Metrics */
+.metrics-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.metric-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.metric-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.metric-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metric-label {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+}
+
+.metric-description {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.metric-score {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.score-bar-bg {
+  flex: 1;
+  height: 8px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.score-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 1s ease;
+}
+
+.score-value {
+  min-width: 40px;
+  text-align: right;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.metric-value {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  padding-left: calc(1.25rem + var(--space-3));
+}

@@ -1,0 +1,177 @@
+% ============================================
+% INTERVIEWMATE AI - SYSTEM DESIGN DOCUMENT
+% ============================================
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\geometry{margin=1in}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, backgrounds}
+
+\title{\textbf{System Design Document}\\[0.3cm]
+\Large InterviewMate AI}
+\author{Architecture Team}
+\date{July 2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Design Overview}
+InterviewMate AI follows a microservices-inspired modular architecture with clear separation between presentation, application, and data layers.
+
+\section{High-Level Architecture}
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=1.2cm and 2cm,
+    box/.style={rectangle, draw, rounded corners, minimum width=3.5cm, minimum height=0.9cm, text centered, font=\small},
+    layer/.style={rectangle, draw, dashed, rounded corners, inner sep=0.4cm},
+    arrow/.style={-{Stealth[scale=0.8]}, thick}
+]
+
+% Client Layer
+\node[box, fill=blue!20] (react) {React.js SPA};
+\node[box, fill=blue!20, right=of react] (webrtc) {WebRTC Client};
+\node[box, fill=blue!20, right=of webrtc] (pdf) {PDF Export};
+
+% API Gateway
+\node[box, fill=orange!20, below=1.5cm of webrtc] (gateway) {Flask API Gateway};
+
+% Services
+\node[box, fill=green!20, below left=1.5cm and 0.5cm of gateway] (auth) {Auth Service};
+\node[box, fill=green!20, below=of gateway] (interview) {Interview Service};
+\node[box, fill=green!20, below right=1.5cm and 0.5cm of gateway] (report) {Report Service};
+
+% AI Modules
+\node[box, fill=purple!20, below left=1.5cm and 0.3cm of interview] (face) {Face Emotion\\(OpenCV+CNN)};
+\node[box, fill=purple!20, below=of interview] (speech) {Speech Analysis\\(Librosa+ML)};
+\node[box, fill=purple!20, below right=1.5cm and 0.3cm of interview] (nlp) {NLP Engine\\(spaCy+Transformers)};
+
+% Database
+\node[box, fill=red!20, below=2.5cm of interview] (mysql) {MySQL};
+\node[box, fill=red!20, right=of mysql] (mongo) {MongoDB};
+
+% Arrows
+\draw[arrow] (react) -- (gateway);
+\draw[arrow] (webrtc) -- (gateway);
+\draw[arrow] (gateway) -- (auth);
+\draw[arrow] (gateway) -- (interview);
+\draw[arrow] (gateway) -- (report);
+\draw[arrow] (interview) -- (face);
+\draw[arrow] (interview) -- (speech);
+\draw[arrow] (interview) -- (nlp);
+\draw[arrow] (auth) -- (mysql);
+\draw[arrow] (interview) -- (mysql);
+\draw[arrow] (report) -- (mysql);
+\draw[arrow] (report) -- (mongo);
+\draw[arrow] (speech) -- (mongo);
+
+\end{tikzpicture}
+\end{center}
+
+\section{Component Design}
+
+\subsection{Frontend Components}
+\begin{longtable}{@{}p{3.5cm}p{9cm}@{}}
+\toprule
+\textbf{Component} & \textbf{Responsibility} \\
+\midrule
+AuthContext & Global authentication state, JWT management, token refresh \\
+InterviewContext & Interview session state, question queue, timer management \\
+useWebcam & Custom hook for webcam access, frame capture, cleanup \\
+useAudioRecorder & Custom hook for MediaRecorder API, audio blob management \\
+VideoFeed & Displays webcam stream with emotion overlay canvas \\
+QuestionDisplay & Renders current question with timer and progress bar \\
+RealtimeFeedback & Shows live tips based on emotion analysis results \\
+EmotionVisualizer & Charts for facial/speech emotion timeline \\
+\bottomrule
+\end{longtable}
+
+\subsection{Backend Services}
+\begin{longtable}{@{}p{3.5cm}p{9cm}@{}}
+\toprule
+\textbf{Service} & \textbf{Responsibility} \\
+\midrule
+Auth Service & Registration, login, JWT issuance, password reset \\
+Interview Service & Session lifecycle, question delivery, response collection \\
+Question Generator & LLM prompt engineering, resume parsing, question customization \\
+Face Emotion Detector & Frame preprocessing, CNN inference, emotion label mapping \\
+Speech Emotion Detector & Audio feature extraction (MFCC, chroma, mel spectrogram), ML classification \\
+NLP Analyzer & Transcript analysis, grammar checking, STAR compliance, keyword matching \\
+Confidence Scorer & Weighted aggregation of all factor scores \\
+Report Generator & Chart generation, PDF compilation, improvement tip generation \\
+\bottomrule
+\end{longtable}
+
+\section{Data Flow Diagrams}
+
+\subsection{Interview Session Flow}
+\begin{enumerate}
+    \item User selects category, company, uploads resume
+    \item Backend parses resume $\rightarrow$ extracts skills/experience
+    \item Question Generator creates personalized question set
+    \item Frontend initializes WebRTC (video + audio)
+    \item Every 500ms: Video frame $\rightarrow$ Face Emotion API $\rightarrow$ Score
+    \item Every 2s: Audio chunk $\rightarrow$ Speech Emotion API $\rightarrow$ Score
+    \item On answer completion: Audio $\rightarrow$ STT $\rightarrow$ NLP Analysis $\rightarrow$ Scores
+    \item Session end: Aggregate all scores $\rightarrow$ Confidence Report $\rightarrow$ PDF
+\end{enumerate}
+
+\section{Database Design}
+Refer to database\_schema.pdf for complete ER diagram and table definitions.
+
+\section{API Design}
+
+\subsection{Authentication Endpoints}
+\begin{longtable}{@{}p{2.5cm}p{2cm}p{8cm}@{}}
+\toprule
+\textbf{Endpoint} & \textbf{Method} & \textbf{Description} \\
+\midrule
+/api/auth/register & POST & Create new user account \\
+/api/auth/login & POST & Authenticate and return JWT tokens \\
+/api/auth/refresh & POST & Refresh access token using refresh token \\
+/api/auth/forgot-password & POST & Send password reset email \\
+/api/auth/reset-password & POST & Reset password with OTP verification \\
+\bottomrule
+\end{longtable}
+
+\subsection{Interview Endpoints}
+\begin{longtable}{@{}p{3.5cm}p{2cm}p{7cm}@{}}
+\toprule
+\textbf{Endpoint} & \textbf{Method} & \textbf{Description} \\
+\midrule
+/api/interview/start & POST & Initialize new interview session \\
+/api/interview/question & GET & Fetch next question \\
+/api/interview/submit & POST & Submit audio/video response \\
+/api/interview/analyze & POST & Trigger AI analysis on response \\
+/api/interview/end & POST & Complete session and generate report \\
+\bottomrule
+\end{longtable}
+
+\section{Security Design}
+\begin{itemize}
+    \item \textbf{Authentication:} JWT with RS256 signing, 15-min access token, 7-day refresh token
+    \item \textbf{Authorization:} Role-based access control (RBAC) with decorators
+    \item \textbf{Input Validation:} Pydantic models for all API inputs
+    \item \textbf{File Upload:} MIME type validation, size limits, virus scanning (ClamAV)
+    \item \textbf{CORS:} Whitelist-based cross-origin policy
+\end{itemize}
+
+\section{Scalability Considerations}
+\begin{itemize}
+    \item AI modules can be containerized and scaled horizontally
+    \item Redis caching for frequently accessed questions and user profiles
+    \item CDN for static assets and company logos
+    \item Database read replicas for report generation queries
+\end{itemize}
+
+\end{document}

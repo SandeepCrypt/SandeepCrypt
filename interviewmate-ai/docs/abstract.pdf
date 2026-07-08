@@ -1,0 +1,45 @@
+% ============================================
+% INTERVIEWMATE AI - PROJECT ABSTRACT
+% ============================================
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+\definecolor{primary}{RGB}{37, 99, 235}
+
+\title{\textbf{\textcolor{primary}{InterviewMate AI}}\\[0.3cm]
+\Large An Intelligent AI-Powered Mock Interview Platform with\\Real-time Emotion Analysis and Confidence Scoring}
+\author{Project Team}
+\date{Academic Year 2025-2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+\textbf{InterviewMate AI} is an advanced mock interview platform that leverages Artificial Intelligence to transform how candidates prepare for job interviews. The system combines \textbf{computer vision}, \textbf{natural language processing}, and \textbf{speech analysis} to provide comprehensive, real-time feedback during simulated interview sessions.
+
+The platform features a \textbf{React.js frontend} with an intuitive user interface, a \textbf{Python Flask backend} powered by multiple AI modules, and a \textbf{MySQL/MongoDB database} for persistent storage. Key innovations include:
+
+\begin{itemize}
+    \item \textbf{AI Question Generation:} LLM-based dynamic question generation tailored to resume content, job category (15+ domains), and target company (TCS, Infosys, Wipro, Accenture, etc.)
+    \item \textbf{Facial Emotion Detection:} Real-time analysis of facial expressions using OpenCV and CNN models to detect confidence, nervousness, and engagement levels
+    \item \textbf{Speech Emotion Recognition:} Audio analysis using Librosa and ML classifiers to detect vocal stress, enthusiasm, and clarity
+    \item \textbf{STAR Model Compliance:} Automated evaluation of answers against the Situation-Task-Action-Result framework
+    \item \textbf{Confidence Score Engine:} Weighted multi-factor scoring combining facial, speech, NLP, and eye-contact metrics
+    \item \textbf{Real-time Feedback:} Live tips and suggestions during the interview session
+    \item \textbf{Comprehensive Reports:} Detailed post-session reports with charts, improvement tips, and PDF export
+    \item \textbf{Progress Tracking:} Longitudinal performance analytics with trend visualization
+\end{itemize}
+
+The system addresses the critical gap in interview preparation by providing objective, data-driven insights that help candidates identify weaknesses, improve communication skills, and build confidence before actual interviews.
+
+\vspace{0.5cm}
+\noindent\textbf{Keywords:} Artificial Intelligence, Mock Interview, Emotion Recognition, Natural Language Processing, Computer Vision, Confidence Scoring, STAR Model, Flask, React.js, Deep Learning
+\end{abstract}
+
+\end{document}

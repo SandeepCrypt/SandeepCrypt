@@ -1,0 +1,210 @@
+% ============================================
+% INTERVIEWMATE AI - DATABASE SCHEMA DOCUMENT
+% ============================================
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+
+\geometry{margin=1in}
+\definecolor{primary}{RGB}{37, 99, 235}
+
+\title{\textbf{Database Schema Document}\\[0.3cm]
+\Large InterviewMate AI}
+\author{Database Team}
+\date{July 2025}
+
+\begin{document}
+\maketitle
+
+\section{Database Overview}
+InterviewMate AI uses a hybrid database approach:
+\begin{itemize}
+    \item \textbf{MySQL:} Structured relational data (users, sessions, questions, reports)
+    \item \textbf{MongoDB:} Unstructured data (facial emotion frames, speech features, transcripts)
+\end{itemize}
+
+\section{Entity Relationship Diagram}
+
+\begin{center}
+\fbox{
+\begin{minipage}{0.9\textwidth}
+\centering
+\textbf{ER Diagram Relationships:}
+
+\vspace{0.3cm}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Entity A} & \textbf{Relationship} & \textbf{Entity B} \\
+\midrule
+USERS & 1:N & INTERVIEW\_SESSIONS \\
+USERS & 1:1 & PROGRESS\_TRACKING \\
+JOB\_CATEGORIES & 1:N & QUESTION\_BANK \\
+COMPANIES & 1:N & QUESTION\_BANK \\
+QUESTION\_BANK & 1:N & STAR\_MODEL\_ANSWERS \\
+QUESTION\_BANK & 1:N & RESPONSES \\
+INTERVIEW\_SESSIONS & 1:N & RESPONSES \\
+INTERVIEW\_SESSIONS & 1:1 & CONFIDENCE\_REPORTS \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+}
+\end{center}
+
+\section{Table Definitions}
+
+\subsection{USERS}
+\begin{longtable}{@{}p{2.5cm}p{2cm}p{2cm}p{5.5cm}@{}}
+\toprule
+\textbf{Column} & \textbf{Type} & \textbf{Constraints} & \textbf{Description} \\
+\midrule
+user\_id & INT & PK, AUTO\_INCREMENT & Unique user identifier \\
+name & VARCHAR(100) & NOT NULL & Full name of user \\
+email & VARCHAR(255) & NOT NULL, UNIQUE & Email address \\
+password & VARCHAR(255) & NOT NULL & Bcrypt hashed password \\
+college & VARCHAR(200) & NULL & College/University name \\
+branch & VARCHAR(100) & NULL & Field of study \\
+year & INT & NULL & Academic year (1-4) \\
+created\_at & TIMESTAMP & DEFAULT NOW() & Account creation time \\
+updated\_at & TIMESTAMP & ON UPDATE & Last modification time \\
+\bottomrule
+\end{longtable}
+
+\subsection{JOB\_CATEGORIES}
+\begin{longtable}{@{}p{2.5cm}p{2cm}p{2cm}p{5.5cm}@{}}
+\toprule
+\textbf{Column} & \textbf{Type} & \textbf{Constraints} & \textbf{Description} \\
+\midrule
+category\_id & INT & PK, AUTO\_INCREMENT & Unique category identifier \\
+category\_name & VARCHAR(100) & NOT NULL & Name of job domain \\
+description & TEXT & NULL & Category description \\
+icon\_path & VARCHAR(255) & NULL & Path to category icon \\
+\bottomrule
+\end{longtable}
+
+\subsection{COMPANIES}
+\begin{longtable}{@{}p{2.5cm}p{2cm}p{2cm}p{5.5cm}@{}}
+\toprule
+\textbf{Column} & \textbf{Type} & \textbf{Constraints} & \textbf{Description} \\
+\midrule
+company\_id & INT & PK, AUTO\_INCREMENT & Unique company identifier \\
+company\_name & VARCHAR(100) & NOT NULL & Company name \\
+logo & VARCHAR(255) & NULL & Path to company logo \\
+type & VARCHAR(50) & NULL & MNC / Startup / Product / Service \\
+special\_focus & TEXT & NULL & Special hiring focus areas \\
+\bottomrule
+\end{longtable}
+
+\subsection{QUESTION\_BANK}
+\begin{longtable}{@{}p{2.5cm}p{2cm}p{2cm}p{5.5cm}@{}}
+\toprule
+\textbf{Column} & \textbf{Type} & \textbf{Constraints} & \textbf{Description} \\
+\midrule
+q\_id & INT & PK, AUTO\_INCREMENT & Unique question identifier \\
+category\_id & INT & FK & Reference to JOB\_CATEGORIES \\
+company\_id & INT & FK, NULL & Reference to COMPANIES (NULL = generic) \\
+question\_text & TEXT & NOT NULL & The interview question \\
+difficulty & ENUM & ('Easy','Medium','Hard') & Question difficulty level \\
+question\_type & ENUM & ('Technical','Behavioral','HR','Situational') & Question category \\
+expected\_keywords & JSON & NULL & Array of expected answer keywords \\
+\bottomrule
+\end{longtable}
+
+\subsection{STAR\_MODEL\_ANSWERS}
+\begin{longtable}{@{}p{2.5cm}p{2cm}p{2cm}p{5.5cm}@{}}
+\toprule
+\textbf{Column} & \textbf{Type} & \textbf{Constraints} & \textbf{Description} \\
+\midrule
+model\_id & INT & PK, AUTO\_INCREMENT & Unique model answer ID \\
+q\_id & INT & FK & Reference to QUESTION\_BANK \\
+situation & TEXT & NOT NULL & Situation component \\
+task & TEXT & NOT NULL & Task component \\
+action & TEXT & NOT NULL & Action component \\
+result & TEXT & NOT NULL & Result component \\
+full\_answer & TEXT & NOT NULL & Complete STAR answer \\
+keywords\_covered & JSON & NULL & Keywords included in answer \\
+\bottomrule
+\end{longtable}
+
+\subsection{INTERVIEW\_SESSIONS}
+\begin{longtable}{@{}p{2.5cm}p{2cm}p{2cm}p{5.5cm}@{}}
+\toprule
+\textbf{Column} & \textbf{Type} & \textbf{Constraints} & \textbf{Description} \\
+\midrule
+session\_id & INT & PK, AUTO\_INCREMENT & Unique session identifier \\
+user\_id & INT & FK & Reference to USERS \\
+category\_id & INT & FK & Selected job category \\
+company\_id & INT & FK, NULL & Selected target company \\
+date & DATETIME & DEFAULT NOW() & Session start time \\
+duration & INT & NULL & Total duration in seconds \\
+overall\_score & DECIMAL(5,2) & NULL & Final confidence score (0-100) \\
+status & ENUM & ('Active','Completed','Aborted') & Session status \\
+\bottomrule
+\end{longtable}
+
+\subsection{RESPONSES}
+\begin{longtable}{@{}p{2.5cm}p{2cm}p{2cm}p{5.5cm}@{}}
+\toprule
+\textbf{Column} & \textbf{Type} & \textbf{Constraints} & \textbf{Description} \\
+\midrule
+response\_id & INT & PK, AUTO\_INCREMENT & Unique response identifier \\
+session\_id & INT & FK & Reference to INTERVIEW\_SESSIONS \\
+q\_id & INT & FK & Reference to QUESTION\_BANK \\
+audio\_path & VARCHAR(255) & NULL & Path to recorded audio file \\
+transcript & TEXT & NULL & Speech-to-text output \\
+facial\_emotion\_data & JSON & NULL & MongoDB reference ID \\
+speech\_emotion\_data & JSON & NULL & MongoDB reference ID \\
+answer\_score & DECIMAL(5,2) & NULL & NLP-based answer quality (0-100) \\
+star\_compliance\_score & DECIMAL(5,2) & NULL & STAR framework score (0-100) \\
+ai\_feedback & TEXT & NULL & Generated feedback for this answer \\
+\bottomrule
+\end{longtable}
+
+\subsection{CONFIDENCE\_REPORTS}
+\begin{longtable}{@{}p{2.5cm}p{2cm}p{2cm}p{5.5cm}@{}}
+\toprule
+\textbf{Column} & \textbf{Type} & \textbf{Constraints} & \textbf{Description} \\
+\midrule
+report\_id & INT & PK, AUTO\_INCREMENT & Unique report identifier \\
+session\_id & INT & FK & Reference to INTERVIEW\_SESSIONS \\
+facial\_score & DECIMAL(5,2) & NULL & Average facial emotion score \\
+speech\_score & DECIMAL(5,2) & NULL & Average speech emotion score \\
+clarity\_score & DECIMAL(5,2) & NULL & Speech clarity score \\
+answer\_score & DECIMAL(5,2) & NULL & Average answer quality score \\
+eye\_contact\_score & DECIMAL(5,2) & NULL & Eye contact percentage \\
+overall\_score & DECIMAL(5,2) & NOT NULL & Weighted overall score \\
+improvement\_tips & JSON & NULL & Array of improvement suggestions \\
+pdf\_path & VARCHAR(255) & NULL & Path to generated PDF report \\
+\bottomrule
+\end{longtable}
+
+\subsection{PROGRESS\_TRACKING}
+\begin{longtable}{@{}p{2.5cm}p{2cm}p{2cm}p{5.5cm}@{}}
+\toprule
+\textbf{Column} & \textbf{Type} & \textbf{Constraints} & \textbf{Description} \\
+\midrule
+progress\_id & INT & PK, AUTO\_INCREMENT & Unique progress record \\
+user\_id & INT & FK & Reference to USERS \\
+session\_count & INT & DEFAULT 0 & Total completed sessions \\
+avg\_score & DECIMAL(5,2) & NULL & Average score across sessions \\
+best\_score & DECIMAL(5,2) & NULL & Highest score achieved \\
+weakest\_area & VARCHAR(100) & NULL & Area needing most improvement \\
+strongest\_area & VARCHAR(100) & NULL & Best performing area \\
+trend & JSON & NULL & Score history array for charting \\
+\bottomrule
+\end{longtable}
+
+\section{Indexes}
+\begin{itemize}
+    \item \texttt{USERS(email)} - Unique index for fast login lookups
+    \item \texttt{QUESTION\_BANK(category\_id, company\_id)} - Composite index for question filtering
+    \item \texttt{INTERVIEW\_SESSIONS(user\_id, date)} - Index for user's session history
+    \item \texttt{RESPONSES(session\_id)} - Index for session response retrieval
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,89 @@
+/* ============================================
+   INTERVIEWMATE AI - REALTIME FEEDBACK STYLES
+   ============================================ */
+
+.realtime-feedback {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.feedback-header {
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.feedback-title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+}
+
+.feedback-list {
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.feedback-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  animation: slideInRight 0.4s ease;
+  border-left: 3px solid transparent;
+}
+
+.feedback-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.feedback-message {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Feedback Types */
+.feedback-item.positive {
+  background: var(--success-50);
+  border-left-color: var(--success-500);
+}
+
+.feedback-item.warning {
+  background: var(--warning-50);
+  border-left-color: var(--warning-500);
+}
+
+.feedback-item.info {
+  background: var(--primary-50);
+  border-left-color: var(--primary-500);
+}
+
+.feedback-item.critical {
+  background: var(--danger-50);
+  border-left-color: var(--danger-500);
+}
+
+.feedback-item.encouragement {
+  background: #f0fdf4;
+  border-left-color: #22c55e;
+}
+
+/* Animation */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
